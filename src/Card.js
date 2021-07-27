@@ -2,17 +2,26 @@ import React, { useContext } from "react";
 import MyContext from "./MyContext";
 
 function Card({ myId, image }) {
-  const { setOpenCards } = useContext(MyContext);
+  const { openCards, setOpenCards } = useContext(MyContext);
 
   const cardFlipFunc = (e) => {
     if (e.target.classList.contains("card-image")) {
       e.target.parentNode.parentNode.classList.toggle("is-flipped");
     } else if (e.target.classList.contains("card__face--front")) {
       e.target.parentNode.classList.toggle("is-flipped");
-      
+
       var newOpen = e.target.nextElementSibling.childNodes[0];
 
       setOpenCards((prev) => [...prev, newOpen]);
+
+      console.log(openCards);
+
+      if(openCards.length > 2){
+        for (let i = 0; i < openCards.length; i++) {
+          openCards[i].parentNode.parentNode.classList.toggle("is-flipped");
+          
+        }
+      }
     }
   };
 

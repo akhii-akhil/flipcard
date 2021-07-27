@@ -10,6 +10,7 @@ function Body() {
   const tebrik = document.getElementsByClassName("congr")[0];
   let myShuffle = cards;
 
+  //array içindeki itemleri rastgele sıralama fonksiyonu
   function shuffle(a) {
     for (let i = a.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -18,22 +19,27 @@ function Body() {
     return a;
   }
 
+
   const bestscores = JSON.parse(localStorage.getItem("bestscores"));
   if (!bestscores) {
     localStorage.setItem("bestscores", JSON.stringify([]));
   }
 
+  //bestscore'um 100 olsun, eğer localde varsa en küçük olan myBest olsun
   let myBest = 100;
   if (bestscores) {
     const mike = JSON.parse(localStorage.getItem("bestscores"));
     myBest = Math.min(...mike);
   }
 
+  //component yüklendiğinde cardları bir kere kar
   useEffect(() => {
     myShuffle = shuffle(cards);
   }, []);
 
   useEffect(() => {
+
+    //oyun başarıyla bitirildiğinde...
     if (myClasses.length === 12) {
       for (let i = 0; i < myInner.length; i++) {
         myInner[i].classList.remove("hideMe");
@@ -53,6 +59,7 @@ function Body() {
       }, 5000);
     }
 
+    //seçili kartların sayısı iki olduğunda...
     if (openCards.length === 2) {
       setTimeout(() => {
         if (
@@ -69,10 +76,11 @@ function Body() {
           setOpenCards([]);
           setMoves(moves + 1);
         }
-      }, 500);
+      }, 300);
     }
   }, [openCards]);
 
+  //restart butonuna basıldığında...
   const handleRestart = () => {
     for (let i = 0; i < myInner.length; i++) {
       myInner[i].classList.remove("hideMe");
@@ -85,7 +93,7 @@ function Body() {
 
   return (
     <div>
-      <h1>Play the Flip Card Game</h1>
+      <h1>Play Flip Card Game</h1>
       <p>
         Select two cards with same content consequtively to make them vanish
       </p>
@@ -94,8 +102,8 @@ function Body() {
           return <Card key={index} image={card.image} myId={card.id} />;
         })}
         <div className="congr">
-          <p>Tebrikler!</p>
-          <p>Puanınız: {moves}</p>
+          <p>Congratulations!</p>
+          <p>Your Score: {moves}</p>
         </div>
       </div>
 
