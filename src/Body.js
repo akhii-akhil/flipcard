@@ -19,7 +19,6 @@ function Body() {
     return a;
   }
 
-
   const bestscores = JSON.parse(localStorage.getItem("bestscores"));
   if (!bestscores) {
     localStorage.setItem("bestscores", JSON.stringify([]));
@@ -38,7 +37,6 @@ function Body() {
   }, []);
 
   useEffect(() => {
-
     //oyun başarıyla bitirildiğinde...
     if (myClasses.length === 12) {
       for (let i = 0; i < myInner.length; i++) {
