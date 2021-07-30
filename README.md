@@ -1,3 +1,12 @@
+# Flip Card || Memory Game - ReactJS
+
+See live: [https://flipcard-hakan.netlify.app/](https://flipcard-hakan.netlify.app/)
+
+<img src="./src/flipcard.png" width="100%" align="center">
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
