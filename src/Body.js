@@ -20,17 +20,18 @@ function Body() {
   }
 
   const bestscores = JSON.parse(localStorage.getItem("bestscores"));
+  
   if (!bestscores) {
     localStorage.setItem("bestscores", JSON.stringify([]));
   }
 
   //bestscore'um 100 olsun, eğer localde varsa en küçük olan myBest olsun
   let myBest = 100;
-  if (bestscores) {
+  if (bestscores && bestscores.length > 0) {
     const mike = JSON.parse(localStorage.getItem("bestscores"));
     myBest = Math.min(...mike);
   }
-
+  
   //component yüklendiğinde cardları bir kere kar
   useEffect(() => {
     myShuffle = shuffle(cards);
@@ -44,7 +45,7 @@ function Body() {
         myInner[i].classList.toggle("is-flipped");
       }
       const bestscores = JSON.parse(localStorage.getItem("bestscores"));
-      bestscores.push(moves);
+      bestscores.push(moves + 1);
       localStorage.setItem("bestscores", JSON.stringify(bestscores));
       if (moves < myBest) {
         myBest = moves;
@@ -76,6 +77,7 @@ function Body() {
         }
       }, 300);
     }
+    console.log(bestscores);
   }, [openCards]);
 
   //restart butonuna basıldığında...

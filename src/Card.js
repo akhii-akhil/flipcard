@@ -14,12 +14,9 @@ function Card({ myId, image }) {
 
       setOpenCards((prev) => [...prev, newOpen]);
 
-      console.log(openCards);
-
-      if(openCards.length > 2){
+      if (openCards.length > 2) {
         for (let i = 0; i < openCards.length; i++) {
           openCards[i].parentNode.parentNode.classList.toggle("is-flipped");
-          
         }
       }
     }
