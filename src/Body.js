@@ -20,7 +20,7 @@ function Body() {
   }
 
   const bestscores = JSON.parse(localStorage.getItem("bestscores"));
-  
+
   if (!bestscores) {
     localStorage.setItem("bestscores", JSON.stringify([]));
   }
@@ -31,7 +31,7 @@ function Body() {
     const mike = JSON.parse(localStorage.getItem("bestscores"));
     myBest = Math.min(...mike);
   }
-  
+
   //component yüklendiğinde cardları bir kere kar
   useEffect(() => {
     myShuffle = shuffle(cards);
@@ -90,7 +90,6 @@ function Body() {
     myShuffle = shuffle(cards);
     tebrik.classList.remove("tebrik");
   };
-
   return (
     <div>
       <h1>Play Flip Card Game</h1>
@@ -102,7 +101,6 @@ function Body() {
           return <Card key={index} image={card.image} myId={card.id} />;
         })}
         <div className="congr">
-          <p>Congratulations!</p>
           <p>Your Score: {moves}</p>
         </div>
       </div>

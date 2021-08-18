@@ -81,13 +81,20 @@
   height: 100%;
   font-size: 2rem;
   display: none;
+  background-image: url(./images/congr.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
 }
 
 .tebrik {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  font-weight: bolder;
+  font-size: 3rem;
+  color: rgb(57, 87, 2);
 }
 
 button {
