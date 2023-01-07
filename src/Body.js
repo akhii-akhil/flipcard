@@ -58,7 +58,6 @@ function Body() {
       }, 5000);
     }
 
-    //seçili kartların sayısı iki olduğunda...
     if (openCards.length === 2) {
       setTimeout(() => {
         if (
